@@ -1,0 +1,46 @@
+HashMap:
+Hashmap is not thread safe and should be in synchronized block in multithread applications
+
+HashTable:
+It uses synchronized  methods to achieve thread safety. But it locks all hashtable because of that only one thread at a time can bu access hashtable.
+
+SynchronizedMap:
+
+Collections.SynchronizedMap converts any thrrad unsafe map implemnentation to thread safe implementation while making all methods synchronized
+It locks all map and other threads cannot be access when one thread access.
+
+ConcurrentHashMap:  
+The underlined data structure for ConcurrentHashMap is Hashtable.
+ConcurrentHashMap class is thread-safe i.e. multiple threads can operate on a single object without any complications.
+At a time any number of threads are applicable for a read operation without locking the ConcurrentHashMap object which is not there in HashMap.
+In ConcurrentHashMap, the Object is divided into a number of segments according to the concurrency level.
+The default concurrency-level of ConcurrentHashMap is 16.
+In ConcurrentHashMap, at a time any number of threads can perform retrieval operation but for updation in the object, the thread must lock the particular segment in which the thread wants to operate. 
+This type of locking mechanism is known as Segment locking or bucket locking. Hence at a time, 16 update operations can be performed by threads.
+Inserting null objects is not possible in ConcurrentHashMap as key or value.
+
+BlockingQueue:
+The term blocking queue comes from the fact that the Java BlockingQueue is capable of blocking the threads that try to insert or take elements from the queue. 
+For instance, if a thread tries to take an element and there are none left in the queue, the thread can be blocked until there is an element to take. 
+if a thread tries to put an element and queue is full, the thread can be blocked until one or more element is removed from queue.
+Whether or not the calling thread is blocked depends on what methods you call on the BlockingQueue.
+
+
+PriorityQueue:
+Unlike a standard queue, you can't just add any type of element to a PriorityQueue. There are two options:
+Adding elements which implement Comparable
+Adding elements which do not implement Comparable, on the condition that you provide a Comparator as well
+A priority queue in Java is a special type of queue wherein all the elements are ordered as per their natural ordering or based on a custom Comparator supplied at the time of creation.
+The front of the priority queue contains the least element according to the specified ordering, and the rear of the priority queue contains the greatest element.
+
+PriorityBlockingQueue:
+A priority queue in Java is a special type of queue wherein all the elements are ordered as per their natural ordering or based on a custom Comparator supplied at the time of creation.
+For instance, if a thread tries to take an element and there are none left in the queue, the thread can be blocked until there is an element to take. 
+if a thread tries to put an element and queue is full, the thread can be blocked until one or more element is removed from queue.
+
+LinkedBlockingQueue:
+The blocking feature of the LinkedBlockingQueue is associated with some cost. 
+This cost is because every put or the take operation is lock contended between the producer or the consumer threads.
+
+ConcurrentLinkedQueue:
+A ConcurrentLinkedQueue is an unbounded, thread-safe, and non-blocking queue.

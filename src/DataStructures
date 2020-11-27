@@ -1,0 +1,32 @@
+ARRAY:
+-Fixed size, costly insert and delete
++Fast lookup, fast append
+
+Complexity
+Space  O(N)
+Lookup O(1)
+Append O(1)
+Insert O(N)
+Delete O(N)
+
+Why insert is costly. 
+
+A-B-C-D-E we have 5 value in array. When Z is inserted between B and C, first C,D and E must be shifted and Z can be inserted.
+A-B-Z-C-D-E. Because of shift operation is is cotly.
+Delete is like insert. If C is deleted, other indexes will be shifted.
+
+ARRAYLIST(Dynamic Array):
++Fast lookup, variable size
+-Slow worstcase appends(10th element), costly insert and delete
+
+When ArrayList is created, it has 10 memory area. If 11th index is added, new 20 memory area is created with new 10 memory area. 
+After that all element is copied to new memory. Copy elementws takes O(N) time
+Best case for appending O(1). We have 5 element and when new element is added, new area will not be created.
+
+
+Complexity  Average Worst
+Space        O(N)    O(N)
+Lookup       O(1)    O(1)
+Append       O(1)    O(N)
+Insert       O(N)    O(N)
+Delete       O(N)    O(N)

@@ -1,0 +1,76 @@
+MICROSERVICE MONITORING:
+* There should be logs in microservice. and we should add correlation id for every log to trace logs
+* Monitoring tools should be used for example we use grafana
+* we should have metrics(CPU, Memory ...) if CPU is greater than 40 percent or
+if response time is grater than 1 second, alarm must be triggered
+* if microservice is limited to AWS, using CloudWatch is useful
+* APM(Application Performance Monitoring) tools like Raygun will surface problems
+
+
+MICROSERVICE
+Microservice are a way of breaking large software projects into loosely coupled modules
+which comunicate with each other through simple APIs
+
+ADVANTAGE
+* Fault Isolation: Larger pps can remain mostly unaffected by the failure of a single error.
+* Flexibility for trying new dependency/tech
+* Ease of understanding
+* Smaller and faster deployments
+* Scalability: scale separately
+DISADVANTAGE
+* Communication is complex
+* More service = More DB, transaction management
+* Debugging
+
+SOLID PRINCIPLES
+* Single Responsibility
+A class should only have one responsibility. It should have only one reason to change
+
+* Open/Closed
+Classes should be open for extension but closed for modification. In doing so, we stop ourselved from modifying existing code and causing potential new bugs
+
+* Liskov Substitution
+If class A is a substype of class B then we we should be able to replace B with A without disrupting behaviour of program
+
+* Interface Segregation
+The larger interfaces should be split into smaller ones.
+
+* Dependency Inversion
+We need to introduce an abstraction that decouples the high level and low level modules from each other.
+
+
+DRY: Dont Repaat Yourself
+KISS: Keep It Simple, Stupid
+
+
+REST
+REST means Representational State Transfer. It is for Distributed HyperMedia systems
+REST is a generalized architecture for describing a stateless, caching client-server distributed-media platform. 
+A REST architecture can be implemented using a number of different communication protocols, though HTTP is by far the most common.
+
+Principles oF REST
+* URI/URL
+* Client/Server
+* Stateless
+Session state is kepy entirely on the clienti not a server.
+If the web server stores password or another data in a backend manner and uses it to identify you as a constantly connected client, the service is stateful.
+* Cacheable
+Data within a response to request be cacheable or non-cacheable.
+* Layered Architecture
+Each layer only knows about the layer next to it, and no more. This promotes separation-of-concerns. Each layer is responsible for a specific role. 
+It knows how to do its job, and passes information to and from its immediate neighboring layer to get the job done. 
+
+Resource Methods
+GET/POST/PUT/DELETE/PATCH
+
+PATCH 
+The HTTP methods PATCH can be used to update partial resources. 
+For instance, when you only need to update one field of the resource, PUTting a complete resource representation might be cumbersome and utilizes more bandwidth
+
+Idempotent
+Making identical requests has the some effects as making a single request.
+dempotence essentially means that the result of a successfully performed request is independent of the number of times it is executed. 
+For example, in arithmetic, adding zero to a number is an idempotent operation.
+
+1. POST is NOT idempotent.
+2. GET, PUT, DELETE, HEAD, OPTIONS and TRACE are idempotent.
