@@ -1,4 +1,6 @@
-package com.fordevelopers.svc;
+package main.java;
+
+import java.math.BigInteger;
 
 public class AddTwoNumbers {
 
@@ -11,64 +13,70 @@ public class AddTwoNumbers {
   }
 
     public static void main(String[] args) {
-        ListNode listNode1 = new ListNode(1);
-        ListNode listNode2 = new ListNode(2);
-        ListNode listNode3 = new ListNode(3);
-        ListNode listNode4 = new ListNode(4);
-        ListNode listNode5 = new ListNode(5);
-        ListNode listNode6 = new ListNode(6);
-        ListNode listNode7 = new ListNode(7);
-        ListNode listNode8 = new ListNode(8);
+        ListNode head1 = createNode(0);
+        insertEnd(head1,8);
+        insertEnd(head1,6);
+        insertEnd(head1,5);
+        insertEnd(head1,6);
+        insertEnd(head1,8);
+        insertEnd(head1,3);
+        insertEnd(head1,5);
+        insertEnd(head1,7);
+        
 
-        listNode1.next = listNode2;
-        listNode2.next= listNode3;
-        listNode3.next = listNode4;
+        ListNode head2 = createNode(6);
+        insertEnd(head2,7);
+        insertEnd(head2,8);
+        insertEnd(head2,0);
+        insertEnd(head2,8);
+        insertEnd(head2,5);
+        insertEnd(head2,8);
+        insertEnd(head2,9);
+        insertEnd(head2,7);
 
-        listNode5.next = listNode6;
-        listNode6.next= listNode7;
-        listNode7.next = listNode8;
-
-        System.out.println(fromNode(listNode1));
-        System.out.println(fromNode(listNode5));
-        ListNode node = addTwoNumbers(listNode1, listNode5);
+        ListNode node = addTwoNumbers(head1, head2);
         System.out.println("Result : "+fromNode(node));
+    }
+
+    private static ListNode createNode(int val){
+        return new ListNode(val);
+    }
+
+    private static void insertEnd(ListNode head, int val){
+        if(head == null){
+            return;
+        }
+
+        ListNode newNode = new ListNode(val);
+        while(head.next!=null){
+            head = head.next;
+        }
+        head.next = newNode;
     }
 
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        int sum = fromNode(l1) + fromNode(l2);
-        return fromInt(sum);
+        ListNode head = new ListNode();
+        String addResult = fromNode(l1).add(fromNode(l2)).toString();
+        for(int i = addResult.length() - 1;i>=0;i--){
+            insertEnd(head, Character.getNumericValue(addResult.charAt(i)));
+        }
+        return head.next != null ? head.next : head;
     }
 
-    private static int fromNode(ListNode listNode){
+    private static BigInteger fromNode(ListNode listNode){
         StringBuilder stringBuilder = new StringBuilder();
         while(listNode!=null){
             stringBuilder.append(listNode.val);
             listNode = listNode.next;
         }
-        int result = Integer.parseInt(stringBuilder.toString());
-        return reverse(result);
+        return new BigInteger(reverse(stringBuilder.toString()));
     }
 
-    private static ListNode fromInt(int val){
-        int reverse  = 0;
-        ListNode head = new ListNode();
-        while(val>0){
-            reverse = reverse*10 + val%10;
-            val = val/10;
-             ListNode node = new ListNode(reverse);
-            head.next = node;
-            head = node;
-        }
-        return head;
-    }
-
-
-    private static int reverse(int val){
-        int reverse  = 0;
-        while(val>0){
-            reverse = reverse*10 + val%10;
-            val = val/10;
+    private static String reverse(String val){
+        String reverse = "";
+        for(int i = val.length() - 1;i>=0;i--){
+            reverse += val.charAt(i);
         }
         return reverse;
     }
